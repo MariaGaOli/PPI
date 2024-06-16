@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pets</title>
+</head>
+<body>
+    <h1>Lista de Pets</h1>
+    <ul>
+        <% pets.forEach(pet => { %>
+            <li><%= pet.nome %> - <%= pet.raca %> - <%= pet.idade %> anos</li>
+        <% }); %>
+    </ul>
+    <br>
+    <a href="/pets/criar">Cadastrar Novo Pet</a>
+    <br>
+    <a href="/menu">Voltar ao Menu</a>
+</body>
+</html>

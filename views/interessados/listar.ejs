@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Interessados</title>
+</head>
+<body>
+    <h1>Lista de Interessados</h1>
+    <ul>
+        <% interessados.forEach(interessado => { %>
+            <li><%= interessado.nome %> - <%= interessado.email %> - <%= interessado.telefone %></li>
+        <% }); %>
+    </ul>
+    <br>
+    <a href="/interessados/criar">Cadastrar Novo Interessado</a>
+    <br>
+    <a href="/menu">Voltar ao Menu</a>
+</body>
+</html>

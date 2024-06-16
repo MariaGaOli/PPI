@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adotar um Pet</title>
+</head>
+<body>
+    <h1>Adotar um Pet</h1>
+    <form action="/adocao/criar" method="POST">
+        <label for="interessadoId">Interessado:</label>
+        <select id="interessadoId" name="interessadoId" required>
+            <% interessados.forEach(interessado => { %>
+                <option value="<%= interessado.id %>"><%= interessado.nome %></option>
+            <% }); %>
+        </select>
+        <br>
+        <label for="petId">Pet:</label>
+        <select id="petId" name="petId" required>
+            <% pets.forEach(pet => { %>
+                <option value="<%= pet.id %>"><%= pet.nome %></option>
+            <% }); %>
+        </select>
+        <br>
+        <button type="submit">Registrar Adoção</button>
+    </form>
+    <br>
+    <a href="/menu">Voltar ao Menu</a>
+</body>
+</html>
