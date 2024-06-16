@@ -10,20 +10,24 @@
     <form action="/adocao/criar" method="POST">
         <label for="interessadoId">Interessado:</label>
         <select id="interessadoId" name="interessadoId" required>
+            <option value="">Selecione um interessado</option> <!-- Opção vazia -->
             <% interessados.forEach(interessado => { %>
                 <option value="<%= interessado.id %>"><%= interessado.nome %></option>
             <% }); %>
         </select>
-        <br>
+        <br><br>
         <label for="petId">Pet:</label>
         <select id="petId" name="petId" required>
+            <option value="">Selecione um pet</option> <!-- Opção vazia -->
             <% pets.forEach(pet => { %>
                 <option value="<%= pet.id %>"><%= pet.nome %></option>
             <% }); %>
         </select>
-        <br>
-        <button type="submit">Registrar Adoção</button>
+        <br><br>
+        <button type="submit">Adotar</button>
     </form>
+    <br>
+    <a href="/adocao/listar">Ver Adoções</a>
     <br>
     <a href="/menu">Voltar ao Menu</a>
 </body>

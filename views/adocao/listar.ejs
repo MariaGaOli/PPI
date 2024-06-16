@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoções Realizadas</title>
+</head>
+<body>
+    <h1>Adoções Realizadas</h1>
+    <ul>
+        <% adocoes.forEach(adocao => { %>
+            <li>
+                <strong>Interessado:</strong> <%= adocao.interessado.nome %> (<%= adocao.interessado.email %>)
+                <br>
+                <strong>Pet Adotado:</strong> <%= adocao.pet.nome %> (<%= adocao.pet.raca %>)
+                <br>
+                <strong>Data da Adoção:</strong> <%= adocao.dataAdocao.toLocaleDateString() %>
+            </li>
+            <br>
+        <% }); %>
+    </ul>
+    <br>
+    <a href="/menu">Voltar ao Menu</a>
+</body>
+</html>
