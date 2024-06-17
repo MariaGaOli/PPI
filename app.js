@@ -8,12 +8,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Arrays para armazenar dados (simulando um banco de dados)
+
 let interessados = [];
 let petsDisponiveis = [];
 let adocoes = [];
 
-// Middleware
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
@@ -23,19 +23,17 @@ app.use(session({
     cookie: { maxAge: 1800000 } // 30 minutes
 }));
 
-// Configuração da view engine e diretório de views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para renderizar o formulário de login
+// renderizar o formulário de login
 app.get('/', (req, res) => {
     res.render('index', { error: null });
 });
 
-// Rota para processar o formulário de login (POST)
+// processar o formulário de login (POST)
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     // Lógica de autenticação aqui (exemplo simplificado)
@@ -59,17 +57,17 @@ app.get('/menu', (req, res) => {
     }
 });
 
-// Rota para listar interessados
+// listar interessados
 app.get('/interessados', (req, res) => {
     res.render('interessados/listar', { interessados });
 });
 
-// Rota para criar um interessado (formulário)
+// criar um interessado (formulário)
 app.get('/interessados/criar', (req, res) => {
     res.render('interessados/criar');
 });
 
-// Rota para processar a criação de um interessado (POST)
+// processar a criação de um interessado 
 app.post('/interessados', (req, res) => {
     const { nome, email, telefone } = req.body;
     const id = interessados.length + 1; // Gerar um ID simples
@@ -77,17 +75,17 @@ app.post('/interessados', (req, res) => {
     res.redirect('/interessados');
 });
 
-// Rota para listar pets
+//  listar pets
 app.get('/pets', (req, res) => {
     res.render('pets/listar', { pets: petsDisponiveis });
 });
 
-// Rota para criar um pet (formulário)
+//  criar um pet (formulário)
 app.get('/pets/criar', (req, res) => {
     res.render('pets/criar');
 });
 
-// Rota para processar a criação de um pet (POST)
+// processar a criação de um pet 
 app.post('/pets', (req, res) => {
     const { nome, raca, idade } = req.body;
     const id = petsDisponiveis.length + 1; // Gerar um ID simples
@@ -95,17 +93,17 @@ app.post('/pets', (req, res) => {
     res.redirect('/pets');
 });
 
-// Rota para listar as adoções feitas
+// listar as adoções feitas
 app.get('/adocao/listar', (req, res) => {
     res.render('adocao/listar', { adocoes });
 });
 
-// Rota para criar adoção (formulário)
+// criar adoção (formulário)
 app.get('/adocao/criar', (req, res) => {
     res.render('adocao/criar', { interessados, pets: petsDisponiveis, error: null });
 });
 
-// Rota para processar a criação de uma adoção (POST)
+// processar a criação de uma adoção 
 app.post('/adocao/criar', (req, res) => {
     const { interessadoId, petId } = req.body;
     const interessado = interessados.find(i => i.id === parseInt(interessadoId));
@@ -121,7 +119,7 @@ app.post('/adocao/criar', (req, res) => {
     }
 });
 
-// Rota para logout
+// logout
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
